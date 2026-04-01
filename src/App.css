@@ -1,0 +1,388 @@
+.x-shell {
+  min-height: 100svh;
+  background:
+    radial-gradient(circle at top left, #245d88, transparent 30%),
+    radial-gradient(circle at top right, #0f2f4f, transparent 36%),
+    linear-gradient(180deg, #081520 0%, #040a10 100%);
+}
+
+.x-topbar {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 20px;
+  border-bottom: 1px solid #203344;
+  position: sticky;
+  top: 0;
+  backdrop-filter: blur(6px);
+  background: color-mix(in srgb, #091522 84%, transparent);
+  z-index: 3;
+}
+
+.x-logo {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 0 0 2px #77ccff;
+}
+
+.x-title-wrap h1 {
+  margin: 0;
+  font-size: 1.2rem;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+}
+
+.x-title-wrap p {
+  margin: 2px 0 0;
+  font-size: 0.88rem;
+  color: #95adc2;
+}
+
+.x-feed {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 16px;
+  display: grid;
+  gap: 14px;
+}
+
+.tweet-card {
+  border: 1px solid #1f3345;
+  border-radius: 18px;
+  background: color-mix(in srgb, #0d1d2c 86%, transparent);
+  box-shadow: 0 24px 45px -35px #000;
+  padding: 14px;
+}
+
+.tweet-head {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.tweet-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.tweet-head h2 {
+  margin: 0;
+  font-size: 0.98rem;
+}
+
+.tweet-head p {
+  margin: 2px 0 0;
+  font-size: 0.82rem;
+  color: #9ab3c8;
+}
+
+.tweet-text {
+  margin-top: 10px;
+}
+
+.tweet-tags {
+  margin-top: 6px;
+  font-weight: 600;
+  color: #7fd9ff;
+  font-size: 0.92rem;
+}
+
+.blur-card {
+  margin-top: 10px;
+  width: 100%;
+  border: 1px solid #264259;
+  border-radius: 12px;
+  overflow: hidden;
+  padding: 0;
+  background: #000;
+  position: relative;
+  cursor: pointer;
+}
+
+.blur-card img {
+  display: block;
+  width: 100%;
+  height: min(56vw, 390px);
+  object-fit: cover;
+  filter: blur(5px) saturate(120%);
+  transform: scale(1.08);
+}
+
+.blur-overlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: #f4fbff;
+  font-size: 1.08rem;
+  font-weight: 700;
+  background: color-mix(in srgb, #04111b 44%, transparent);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgb(2 10 18 / 86%);
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  z-index: 99;
+}
+
+.modal-card {
+  width: min(680px, 96vw);
+  background: #0c1927;
+  border: 1px solid #2a4a62;
+  border-radius: 16px;
+  padding: 18px;
+  position: relative;
+  max-height: min(90svh, 820px);
+  overflow: hidden;
+}
+
+.modal-content {
+  max-height: calc(min(90svh, 820px) - 44px);
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.modal-content::-webkit-scrollbar {
+  width: 8px;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.modal-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+  background: #4a7a9f;
+  border-radius: 4px;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+  background: #5a8ab5;
+}
+
+.modal-content:hover::-webkit-scrollbar {
+  opacity: 1;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid #355673;
+  background: #112436;
+  color: #d6edff;
+  cursor: pointer;
+  font-size: 1.25rem;
+}
+
+.gate-form h3 {
+  margin: 4px 0;
+  font-size: 1.2rem;
+}
+
+.gate-form p {
+  margin: 0;
+  color: #9eb9ce;
+}
+
+.dob-row {
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+}
+
+.dob-row label {
+  display: grid;
+  gap: 6px;
+}
+
+.dob-row span {
+  font-size: 0.8rem;
+  color: #9eb9ce;
+}
+
+.dob-row select {
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 10px;
+  border: 1px solid #3d607f;
+  background: #081320;
+  color: #e7f5ff;
+  padding: 11px 12px;
+  font-size: 0.95rem;
+}
+
+.gate-form button,
+.gate-message button {
+  margin-top: 10px;
+  border: none;
+  border-radius: 999px;
+  background: linear-gradient(120deg, #8cf0ff, #4eb7ff);
+  color: #0a253b;
+  font-weight: 700;
+  padding: 10px 16px;
+  cursor: pointer;
+}
+
+.gate-message p {
+  margin: 10px 0 0;
+  font-size: 1.03rem;
+}
+
+.video-reveal video {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid #3d617f;
+  margin-top: 20px;
+}
+
+.video-reveal p {
+  margin: 12px 0 0;
+  font-weight: 700;
+}
+
+.reveal-tags {
+  color: #8fdfff;
+  font-size: 0.92rem;
+}
+
+.comment-feed {
+  margin-top: 14px;
+  border: 1px solid #2a4660;
+  background: #081523;
+  border-radius: 12px;
+  padding: 10px;
+}
+
+.comment-feed h4 {
+  margin: 0 0 8px;
+}
+
+.comment-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.comment-add-btn {
+  width: 28px;
+  height: 28px;
+  border: 1px solid #3d607f;
+  border-radius: 50%;
+  background: #0d1f30;
+  color: #d4ecff;
+  font-size: 1.1rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.comment-composer {
+  border: 1px solid #2e4f69;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+  background: #07111c;
+}
+
+.comment-composer p {
+  margin: 0 0 6px;
+  font-size: 0.85rem;
+  color: #9ec7e8;
+}
+
+.comment-composer textarea {
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid #3d607f;
+  background: #081320;
+  color: #e7f5ff;
+  resize: vertical;
+  min-height: 70px;
+  padding: 8px;
+  font: inherit;
+}
+
+.emoji-row {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.emoji-btn {
+  border: 1px solid #365977;
+  border-radius: 999px;
+  background: #0c1c2b;
+  color: #e6f4ff;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+
+.comment-post-btn {
+  margin-top: 8px;
+  border: none;
+  border-radius: 999px;
+  background: linear-gradient(120deg, #8cf0ff, #4eb7ff);
+  color: #0a253b;
+  font-weight: 700;
+  padding: 8px 14px;
+  cursor: pointer;
+}
+
+.comment-item {
+  padding: 8px 0;
+  border-top: 1px solid #1d3246;
+}
+
+.comment-item:first-of-type {
+  border-top: none;
+}
+
+.comment-item p {
+  margin: 0;
+  font-weight: 500;
+  font-size: 0.92rem;
+}
+
+.comment-image {
+  width: 100%;
+  border-radius: 8px;
+  margin-top: 6px;
+  max-height: 300px;
+  object-fit: cover;
+}
+
+@media (max-width: 640px) {
+  .x-feed {
+    padding: 10px;
+  }
+
+  .tweet-card {
+    border-radius: 14px;
+  }
+
+  .modal-card {
+    padding: 14px;
+  }
+
+  .dob-row {
+    grid-template-columns: 1fr;
+  }
+}
