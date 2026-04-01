@@ -15,9 +15,16 @@ import './App.css'
 
 function App() {
   const userCommentStorageKey = 'hotmichonnepics_user_comments_v1'
+  const ageVerifiedStorageKey = 'hotmichonnepics_age_verified_v1'
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [selectedPostId, setSelectedPostId] = useState(null)
-  const [isAgeVerified, setIsAgeVerified] = useState(false)
+  const [isAgeVerified, setIsAgeVerified] = useState(() => {
+    try {
+      return localStorage.getItem(ageVerifiedStorageKey) === 'true'
+    } catch {
+      return false
+    }
+  })
   const [birthMonth, setBirthMonth] = useState('')
   const [birthDay, setBirthDay] = useState('')
   const [birthYear, setBirthYear] = useState('')
@@ -118,6 +125,10 @@ function App() {
   useEffect(() => {
     localStorage.setItem(userCommentStorageKey, JSON.stringify(userCommentsByPost))
   }, [userCommentsByPost])
+
+  useEffect(() => {
+    localStorage.setItem(ageVerifiedStorageKey, String(isAgeVerified))
+  }, [ageVerifiedStorageKey, isAgeVerified])
 
   const selectedPost = posts.find((post) => post.id === selectedPostId)
 
