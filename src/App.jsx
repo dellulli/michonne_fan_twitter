@@ -29,6 +29,7 @@ function App() {
   const [birthDay, setBirthDay] = useState('')
   const [birthYear, setBirthYear] = useState('')
   const [gateResult, setGateResult] = useState(null)
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false)
   const [isCommentComposerOpen, setIsCommentComposerOpen] = useState(false)
   const [commentDraft, setCommentDraft] = useState('')
   const [userCommentsByPost, setUserCommentsByPost] = useState(() => {
@@ -101,6 +102,7 @@ function App() {
     setSelectedPostId(postId)
     setIsCommentComposerOpen(false)
     setCommentDraft('')
+    setIsVideoLoaded(false)
     if (isAgeVerified) {
       setGateResult('allowed')
     } else {
@@ -315,16 +317,22 @@ function App() {
 
               {gateResult === 'allowed' && selectedPostId && (
                 <div className="video-reveal">
-                  <video src={selectedPost?.video} controls autoPlay playsInline />
-                  <p>
+                  <video
+                    src={selectedPost?.video}
+                    controls
+                    autoPlay
+                    playsInline
+                    onCanPlay={() => setIsVideoLoaded(true)}
+                  />
+                  {isVideoLoaded && <p>
                     {selectedPost?.revealCaption}
-                  </p>
-                  <p className="reveal-tags">
+                  </p>}
+                  {isVideoLoaded && <p className="reveal-tags">
                     #michonnefiend #aprilfools #loser #jakesullybetterthanrick
                     #jakesullysohot🤤 #majake🤰
-                  </p>
+                  </p>}
 
-                  <section className="comment-feed" aria-label="Comments">
+                  {isVideoLoaded && <section className="comment-feed" aria-label="Comments">
                     <div className="comment-head">
                       <h4>Comments</h4>
                       <button
@@ -383,7 +391,7 @@ function App() {
                         <p>@michonne_pervert231: {comment}</p>
                       </div>
                     ))}
-                  </section>
+                  </section>}
                 </div>
               )}
             </div>
